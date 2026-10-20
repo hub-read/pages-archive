@@ -1,0 +1,11 @@
+<!doctype html><html><head><meta charset="utf-8"><title>Release asset test</title>
+<link rel="stylesheet" href="https://github.com/hubgork/hubgork.github.io/releases/download/assets-v1/style.css"></head><body>
+<h1>Release 资产引用测试</h1>
+<h2>1. CSS</h2><p>成功标志：页面背景变黄，下行文字为红底白字。</p><p class="from-release-css">CSS class test</p>
+<h2>2. JS</h2><p>成功标志：下方显示 "JS from release OK"。</p><div id="js">JS NOT loaded</div>
+<script src="https://github.com/hubgork/hubgork.github.io/releases/download/assets-v1/script.js"></script>
+<h2>3. IMG</h2><p>成功标志：下方出现一个放大的 1x1 红色像素方块（非破图图标）。</p><img src="https://github.com/hubgork/hubgork.github.io/releases/download/assets-v1/test.png" width="60" height="60" style="image-rendering:pixelated;border:1px solid #000" alt="IMG FAILED">
+<h2>4. iframe</h2><p>成功标志：框内渲染出 "release html"（若被下载/空白则失败）。</p><iframe src="https://github.com/hubgork/hubgork.github.io/releases/download/assets-v1/test.html" width="400" height="120"></iframe>
+<h2>5. fetch()</h2><p>成功标志：下方显示 "hello"。</p><div id="fetch">pending...</div>
+<script>fetch("https://github.com/hubgork/hubgork.github.io/releases/download/assets-v1/test.txt").then(r=>r.text()).then(t=>fetch_.textContent="OK: "+t).catch(e=>fetch_.textContent="ERROR: "+e);var fetch_=document.getElementById("fetch");</script>
+</body></html>
