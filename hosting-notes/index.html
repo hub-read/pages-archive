@@ -1,0 +1,20 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>GitHub 静态资源托管结论</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:42rem;margin:2rem auto;padding:0 1rem;line-height:1.55}
+code{background:#f4f4f4;padding:.1em .35em;border-radius:4px;font-size:.92em}
+li{margin:.4rem 0}
+.note{color:#555;font-size:.9rem}
+</style>
+<h1>GitHub 静态资源托管结论</h1>
+<p class="note">整理自 2026-10-20 试验仓 <code>hubgork/asset-test</code>（已删除）；归档于本仓。</p>
+<ol>
+<li><code>raw.githubusercontent.com</code>：仅适合 <code>&lt;img&gt;</code> 与 <code>fetch()</code>；CSS/JS 会被当成 <code>text/plain</code> 且带 nosniff，浏览器拒绝当样式/脚本。</li>
+<li><code>github.com/.../raw</code>：基本只适合图片。</li>
+<li><a href="https://cdn.jsdelivr.net/gh/">jsDelivr</a>（<code>cdn.jsdelivr.net/gh/...</code>）：CSS / JS / 图片 / fetch 可用；<code>@main</code> 缓存约浏览器 7 天、CDN 12 小时——生产请钉 <code>@tag</code>/<code>@sha</code> 或 purge。</li>
+<li>以上渠道都<strong>不会渲染 HTML 页面</strong>；真正的网页必须上 GitHub Pages。</li>
+<li>从 Pages 引用 <strong>Release 资产</strong>：<code>&lt;img&gt;</code> 与 <code>&lt;script&gt;</code> JS 可用；CSS（octet-stream）不行；iframe HTML 会下载；<code>fetch()</code> 无 CORS。</li>
+</ol>
+<p><strong>发布习惯</strong>：非机密预览放 Pages 子目录；大项目独立仓+Pages；很小的资源可用 Release 资产再由 Pages 引用。</p>
