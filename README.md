@@ -1,9 +1,8 @@
-# hubgork.github.io
+# pages-archive
 
-由 GitHub Actions 部署（`.github/workflows/pages.yml`）。
+本仓是原先 **hubgork/hubgork.github.io** 的内容归档（已整体转移到组织 [hub-read](https://github.com/hub-read) 并改名）。
 
-用法：新建一个顶层子文件夹，放入 `index.html`，push 到 main 即可。根目录 `index.html` 由 `scripts/build-index.py` 在构建时自动生成（不提交到仓库），按最近提交时间倒序列出所有含 `index.html` 的子文件夹。
+- 现网个人 Pages 主仓：<https://github.com/hubgork/hubgork.github.io>（已清空重建，待放新预览）
+- 归档内旧预览子目录仍保留；托管试验结论见 [`hosting-notes/`](hosting-notes/)
 
-- 标题取自页面的 `<title>`；可选 `meta.json`：`{"title": "...", "description": "..."}` 覆盖。
-- 只放非机密内容；大型项目用独立仓库；很小的文件可放 Release 资产。
-- 推送约 1 分钟后生效；浏览器缓存 max-age=600，可用 `?v=` 绕过。
+由 GitHub Actions 部署时：根目录 `index.html` 由 `scripts/build-index.py` 构建生成，勿手改提交。
